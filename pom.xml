@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.baseball</groupId>
     <artifactId>docker-compose-reactive</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
     <name>docker-compose-reactive</name>
     <description>docker-compose-reactive</description>
     <properties>
@@ -68,6 +68,7 @@
                 </configuration>
             </plugin>
         </plugins>
+        <finalName>baseball-app</finalName>
     </build>
 
 </project>

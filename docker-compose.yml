@@ -1,0 +1,65 @@
+#version: "3.7"
+#
+#services:
+#    api_service:
+#      build: .
+#      restart: always
+#      ports:
+#        - 8080:8080
+#      depends_on:
+#        - postgres_db
+#      links:
+#        - postgres_db:database
+#
+#    postgres_db:
+#      image: "postgres:11.4"
+#      restart: always
+#      ports:
+#        - 5432:5432
+#      environment:
+#        POSTGRES_DB: baseballdb
+#        POSTGRES_PASSWORD: nE5kMc7JCGNqwDQM
+#      volumes:
+#        - postgres:/data/postgres
+#
+#
+#
+#    pgadmin:
+#      container_name: pgadmin_container
+#      image: dpage/pgadmin4
+#      environment:
+#        PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin4@pgadmin.org}
+#        PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
+#      volumes:
+#        - pgadmin:/rood/.pgadmin
+#      ports:
+#        - "${PGADMIN_PORT:-5050}:80"
+#      restart: unless-stopped
+
+version: '3.8'
+services:
+  db:
+    container_name: pg_container
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: nE5kMc7JCGNqwDQM
+      POSTGRES_DB: baseballdb
+    ports:
+      - "5433:5432"
+  pgadmin:
+    container_name: pgadmin4_container
+    image: dpage/pgadmin4
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: root
+    ports:
+      - "5050:80"
+
+#
+#  volumes:
+#    postgres:
+#    pgadmin:
+
