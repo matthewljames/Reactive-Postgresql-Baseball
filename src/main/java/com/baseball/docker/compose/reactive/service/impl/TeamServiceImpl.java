@@ -53,8 +53,13 @@ public class TeamServiceImpl implements TeamService {
     }
 
     @Override
-    public Mono<ResponseEntity<?>> getTeamById(Long id) {
-        return null;
+    public Mono<Team> getTeamById(Long id) {
+        return teamService.getTeamById(id)
+                .flatMap(teamInfo -> {
+                    Mono<Stadium> stadiumMono = stadiumService.getStadium(teamInfo.getStadium_id());
+                    return stadiumMono
+                            .map(stadium -> new Team(teamInfo,stadium, null));
+                });
     }
 
     @Override

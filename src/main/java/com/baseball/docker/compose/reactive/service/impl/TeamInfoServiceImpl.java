@@ -23,9 +23,8 @@ public class TeamInfoServiceImpl implements TeamInfoService {
     }
 
     @Override
-    public Mono<ResponseEntity<?>> getTeamById(Long id) {
-        return repository.findById(id)
-                .map(ResponseEntity::ok);
+    public Mono<TeamInfo> getTeamById(Long id) {
+        return repository.findById(id);
     }
 
     @Override

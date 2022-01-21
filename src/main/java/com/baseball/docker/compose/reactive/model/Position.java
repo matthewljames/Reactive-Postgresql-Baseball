@@ -1,5 +1,8 @@
 package com.baseball.docker.compose.reactive.model;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public enum Position {
     PITCHER(1,"Pitcher", "P"),
     CATCHER(2,"Catcher", "C"),
@@ -15,13 +18,27 @@ public enum Position {
     private final String positionText;
     private final String positionAbreviation;
 
+    private static Map map = new HashMap<>();
+
+
     Position(int positionId, String positionText, String positionAbreviation){
         this.positionId = positionId;
         this.positionText = positionText;
         this.positionAbreviation = positionAbreviation;
     }
 
+    static {
+        for(Position p : Position.values()){
+            map.put(p.positionId, p);
+        }
+    }
+
+    public static Position valueOf(Long positionId){
+        return (Position) map.get(Math.toIntExact(positionId));
+    }
+
     public String getPositionText(){return positionText;}
     public String getPositionAbreviation(){return positionAbreviation;}
     public int getPositionId(){return positionId;}
+
 }

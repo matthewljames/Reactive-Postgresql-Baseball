@@ -10,7 +10,6 @@ public interface TeamService {
 
     Flux<Team> getTeams();
     Mono<ResponseEntity<?>> getTeamRoster(Long id);
-    Mono<ResponseEntity<?>> getTeamById(Long id);
-
+    Mono<Team> getTeamById(Long id);
     Flux<TeamInfo> getTeamsInfo();
 }

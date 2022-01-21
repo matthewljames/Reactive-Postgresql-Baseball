@@ -10,5 +10,6 @@ import lombok.NoArgsConstructor;
 public class Player {
 
     private PlayerInfo playerInfo;
+    private Position position;
     private Team team;
 }
