@@ -21,14 +21,26 @@ public class StadiumResourceImpl {
     Logger logger = LoggerFactory.getLogger(StadiumResourceImpl.class);
 
     @GetMapping("/")
-    public Flux<Stadium> getStadiums(){
+    public Mono<ResponseEntity<?>> getStadiums(){
         logger.info("INSIDE GET STADIUMS CONTROLLER");
-        return service.getStadiums();
+         return Mono.just(ResponseEntity.ok().body(service.getStadiums()));
     }
+
+//    @GetMapping("/")
+//    public Flux<Stadium> getStadiums(){
+//        logger.info("INSIDE GET STADIUMS CONTROLLER");
+//        return service.getStadiums();
+//    }
 
     @PostMapping("/")
     public Mono<ResponseEntity<?>> createStadium(@RequestBody Mono<StadiumDTO> stadiumDTOMono){
         logger.info("INSIDE CREATE STADIUM CONTROLLER");
         return service.createStadium(stadiumDTOMono);
     }
+
+//    @PostMapping("/")
+//    public Mono<ResponseEntity<?>> createStadium(@RequestBody Mono<StadiumDTO> stadiumDTOMono){
+//        logger.info("INSIDE CREATE STADIUM CONTROLLER");
+//        return service.createStadium(stadiumDTOMono);
+//    }
 }
